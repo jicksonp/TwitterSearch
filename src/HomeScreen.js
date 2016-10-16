@@ -71,6 +71,7 @@ class HomeScreen extends Component {
                     lightTheme
                     onSubmitEditing={this.searchTweets.bind(this)}
                     onChangeText={this.onChangeText.bind(this)}
+                    returnKeyType='search'
                     placeholder='Please enter hashtag to search'/>
                 <ShowProgressAndNetworkErrorComponent
                     showLoading={this.props.isFetching}
