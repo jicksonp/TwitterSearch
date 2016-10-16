@@ -45,7 +45,6 @@ class HomeScreen extends Component {
         this.state = {
             searchText: '',
             showTweets: false,
-            tweets: null,
         };
     }
 
@@ -61,22 +60,24 @@ class HomeScreen extends Component {
             showTweets: true,
         });
         this.props.searchTweets(this.state.searchText);
-        //this.props.searchTweets('reactjs');
     }
 
     render() {
         return (
             <View style={styles.container}>
+
                 <Header
                     foreground='dark'
                     title={GLOBAL.SCREEN_TITLE.HOME}>
                 </Header>
+
                 <SearchBar
                     lightTheme
                     onSubmitEditing={this.searchTweets.bind(this)}
                     onChangeText={this.onChangeText.bind(this)}
                     returnKeyType='search'
-                    placeholder='Please enter hashtag to search'/>
+                    placeholder={GLOBAL.STRINGS.HINT_SEARCH}/>
+
                 <ShowProgressAndNetworkErrorComponent
                     showLoading={this.props.isFetching}
                     showError={this.props.showError}
@@ -85,6 +86,7 @@ class HomeScreen extends Component {
                 >
                     {this.renderTweets()}
                 </ShowProgressAndNetworkErrorComponent>
+
             </View>
         );
     }

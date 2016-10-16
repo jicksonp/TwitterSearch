@@ -32,9 +32,9 @@ module.exports = {
         LIGHT_TEXT: '#7F91A7',
     },
     STRINGS: {
+        HINT_SEARCH: 'Please enter hashtag to search',
         NETWORK_ERROR_TITLE: 'Slow or no internet connection',
         NETWORK_ERROR_MESSAGE: 'Please wait & try again after a moment',
         SEARCH_ERROR: 'Failed to get Tweet',
     },
-    ICONS: {},
 };
