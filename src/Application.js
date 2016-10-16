@@ -12,6 +12,8 @@ import {
     SearchBar,
 } from 'react-native-elements';
 
+var PureListView = require('./common/PureListView');
+
 
 const styles = StyleSheet.create({
     container: {
@@ -26,6 +28,7 @@ export default class Application extends Component {
         super(props);
         this.state = {
             searchText: '',
+            tweets: null,
         };
     }
 
@@ -47,6 +50,9 @@ export default class Application extends Component {
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log('Tweets' + JSON.stringify(responseJson));
+                this.setState({
+                    tweets: responseJson.statuses,
+                });
                 return responseJson.statuses;
             })
             .catch((error) => {
@@ -62,7 +68,26 @@ export default class Application extends Component {
                     onSubmitEditing={this.searchTweets.bind(this)}
                     onChangeText={this.onChangeText.bind(this)}
                     placeholder='Please enter hashtag to search'/>
+                <PureListView
+                    data={this.state.tweets}
+                    renderRow={this.renderRow}
+                    renderEmptyList={this.renderEmptyList}
+                />
             </View>
+        );
+    }
+
+    renderRow(tweet) {
+        return (
+            <View>
+                <Text>tweet {tweet.text}</Text>
+            </View>
+        );
+    }
+
+    renderEmptyList(): ?ReactElement {
+        return (
+            <View><Text>Empty tweets</Text></View>
         );
     }
 }
