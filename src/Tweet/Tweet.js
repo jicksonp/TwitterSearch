@@ -13,12 +13,12 @@ import * as GLOBAL from '../utils/Globals';
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
-        padding: 8,
+        padding: 12,
         flexDirection: 'row',
     },
     profile: {
-        width: 50,
-        height: 50,
+        width: 65,
+        height: 65,
         borderRadius: 3,
     },
     tweetContent: {

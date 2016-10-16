@@ -5,7 +5,7 @@ module.exports = {
     },
     COLOR: {
         PRIMARY: '#0F303E',
-        DARK_PRIMARY: '#0C2733',
+        DARK_PRIMARY: 'rgb(102,119,133)',
         APP_BACKGROUND: '#F1F1F1',
         BLACK_75: 'rgba(0,0,0,0.75)',
         GREYISH_BROWN: '#565656',
@@ -34,6 +34,5 @@ module.exports = {
         NETWORK_ERROR_MESSAGE: 'Please wait & try again after a moment',
         SEARCH_ERROR: 'Failed to get Tweet',
     },
-    ICONS: {
-    },
+    ICONS: {},
 };
