@@ -1,9 +1,7 @@
 //@flow
+'use strict';
 
-import {
-    AppRegistry,
-} from 'react-native';
+import {AppRegistry} from 'react-native';
+import setup  from './src/setup';
 
-import Application from './src/Application';
-
-AppRegistry.registerComponent('TwitterSearch', () => Application);
+AppRegistry.registerComponent('TwitterSearch', setup);
