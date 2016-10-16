@@ -13,7 +13,7 @@ import {
 } from 'react-native-elements';
 
 import ShowProgressAndNetworkErrorComponent from './common/ShowProgressAndNetworkErrorComponent';
-
+import * as GLOBAL from './utils/Globals';
 var {connect} = require('react-redux');
 var PureListView = require('./common/PureListView');
 var {searchTweets} = require('./actions/searchAction');
@@ -24,6 +24,17 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F5FCFF',
     },
+    errorContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    errorText: {
+        color: GLOBAL.COLOR.BLACK_54,
+        fontSize: 18,
+        textAlign: 'center',
+    },
 });
 
 class HomeScreen extends Component {
@@ -32,6 +43,7 @@ class HomeScreen extends Component {
         super(props);
         this.state = {
             searchText: '',
+            showTweets: false,
             tweets: null,
         };
     }
@@ -39,10 +51,14 @@ class HomeScreen extends Component {
     onChangeText(text) {
         this.setState({
             searchText: text,
+            showTweets: false,
         });
     }
 
     searchTweets() {
+        this.setState({
+            showTweets: true,
+        });
         this.props.searchTweets(this.state.searchText);
     }
 
@@ -68,14 +84,18 @@ class HomeScreen extends Component {
 
     renderTweets() {
         let content = null;
-        if (this.props.isSuccess) {
-            content = (
-                <PureListView
-                    data={this.props.tweets}
-                    renderRow={this.renderRow}
-                    renderEmptyList={this.renderEmptyList.bind(this)}
-                />
-            );
+        if (this.props.isSuccess && this.state.showTweets) {
+            if (this.props.tweets.length > 0) {
+                content = (
+                    <PureListView
+                        style={{flex:1}}
+                        data={this.props.tweets}
+                        renderRow={this.renderRow}
+                    />
+                );
+            } else {
+                content = this.renderEmptyList();
+            }
         }
         return content;
     }
@@ -88,13 +108,14 @@ class HomeScreen extends Component {
         );
     }
 
-    renderEmptyList(): ?ReactElement {
+    renderEmptyList() {
         return (
-            <View><Text>No Tweets found with {this.state.searchText}</Text></View>
+            <View style={styles.errorContainer}>
+                <Text style={styles.errorText}>No Tweets found with {this.state.searchText}</Text>
+            </View>
         );
     }
 }
-
 
 const mapDispatchToProps = (dispatch) => {
     return {
