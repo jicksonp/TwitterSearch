@@ -1,7 +1,7 @@
 // @flow
 module.exports = {
     SCREEN_TITLE: {
-        HOME: 'Home',
+        HOME: 'Twitter Search',
     },
     COLOR: {
         PRIMARY: '#0F303E',
@@ -27,7 +27,9 @@ module.exports = {
         BLACK_27: 'rgba(0,0,0,0.27)',
         GRE_98: '#FAFAFA',
         CHETWODE_BLUE: '#58A2C2',
-        LOADER_TRANSPARENT_BACKGROUND: 'rgba(0, 0, 0, 0.3)'
+        LOADER_TRANSPARENT_BACKGROUND: 'rgba(0, 0, 0, 0.3)',
+        DARK_TEXT: '#032250',
+        LIGHT_TEXT: '#7F91A7',
     },
     STRINGS: {
         NETWORK_ERROR_TITLE: 'Slow or no internet connection',

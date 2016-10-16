@@ -19,6 +19,8 @@ export default class Application extends Component {
         return (
             <View style={styles.container}>
                 <StatusBar
+                    translucent={true}
+                    barStyle="light-content"
                     backgroundColor={GLOBAL.COLOR.DARK_PRIMARY}
                 />
                 <AppNavigator/>

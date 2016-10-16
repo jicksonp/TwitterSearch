@@ -16,6 +16,7 @@ import ShowProgressAndNetworkErrorComponent from './common/ShowProgressAndNetwor
 import * as GLOBAL from './utils/Globals';
 import Tweet from './Tweet/Tweet';
 var {connect} = require('react-redux');
+var Header = require('./common/AppHeader');
 var PureListView = require('./common/PureListView');
 var {searchTweets} = require('./actions/searchAction');
 
@@ -67,6 +68,10 @@ class HomeScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <Header
+                    foreground='dark'
+                    title={GLOBAL.SCREEN_TITLE.HOME}>
+                </Header>
                 <SearchBar
                     lightTheme
                     onSubmitEditing={this.searchTweets.bind(this)}
