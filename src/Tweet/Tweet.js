@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
         borderRadius: 3,
     },
     tweetContent: {
+        flex: 1,
         marginLeft: 8,
-        marginRight: 8,
         flexDirection: 'column',
     },
     nameContainer: {
@@ -45,9 +45,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         flexWrap: 'wrap',
     },
+    tweetImageContainer: {
+        paddingTop: 8,
+    },
     tweetImage: {
-        marginTop: 8,
-        marginRight: 8,
         height: 150,
         borderRadius: 3,
     },
@@ -59,7 +60,7 @@ class Tweet extends Component {
         let image = null;
         if (tweet.entities.media && tweet.entities.media.length > 0) {
             image = (
-                <View>
+                <View style={styles.tweetImageContainer}>
                     <Image
                         style={styles.tweetImage}
                         resizeMode='cover'
@@ -79,9 +80,7 @@ class Tweet extends Component {
                         <Text style={styles.name}>{tweet.user.name}</Text>
                         <Text style={styles.screenName}>@{tweet.user.screen_name}</Text>
                     </View>
-                    <View>
-                        <Text style={styles.tweetText}>{tweet.text}</Text>
-                    </View>
+                    <Text style={styles.tweetText}>{tweet.text}</Text>
                     {image}
                 </View>
             </View>
