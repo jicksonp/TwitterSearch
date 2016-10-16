@@ -20,12 +20,14 @@ export type Error = {
 
 export type State = {
     isFetching: boolean;
-    tweets: Array<Object>,
+    isSuccess:boolean;
+    tweets: Array<Object>;
     showError: ?Error;
 };
 
 const initialState = {
     isFetching: false,
+    isSuccess: false,
     tweets: null,
     showError: null,
 };
@@ -39,6 +41,7 @@ function search(state: State = initialState, action: Action): State {
             return {
                 ...state,
                 isFetching: true,
+                isSuccess: false,
                 showError: null,
             };
 
@@ -48,6 +51,7 @@ function search(state: State = initialState, action: Action): State {
             let output = {
                 ...state,
                 tweets,
+                isSuccess: true,
                 isFetching: false,
                 showError: null,
             };
@@ -63,6 +67,7 @@ function search(state: State = initialState, action: Action): State {
             return {
                 ...state,
                 isFetching: false,
+                isSuccess: false,
                 showError: {
                     message,
                     type,
