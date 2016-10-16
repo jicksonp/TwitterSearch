@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import {
-    Button,
     SearchBar,
 } from 'react-native-elements';
 
@@ -24,7 +23,7 @@ var {searchTweets} = require('./actions/searchAction');
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F5FCFF',
+        backgroundColor: GLOBAL.COLOR.APP_BACKGROUND,
     },
     errorContainer: {
         flex: 1,
@@ -117,7 +116,7 @@ class HomeScreen extends Component {
     renderEmptyTweet() {
         return (
             <View style={styles.errorContainer}>
-                <Text style={styles.errorText}>No Tweets found with {this.state.searchText}</Text>
+                <Text style={styles.errorText}>No Tweets found with #{this.state.searchText}</Text>
             </View>
         );
     }

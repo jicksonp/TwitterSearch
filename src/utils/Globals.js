@@ -6,7 +6,7 @@ module.exports = {
     COLOR: {
         PRIMARY: '#0F303E',
         DARK_PRIMARY: 'rgb(102,119,133)',
-        APP_BACKGROUND: '#F1F1F1',
+        APP_BACKGROUND: '#F5FCFF',
         BLACK_75: 'rgba(0,0,0,0.75)',
         GREYISH_BROWN: '#565656',
         PALE_GREY_33: 'rgba(231,235,237,0.33)',
