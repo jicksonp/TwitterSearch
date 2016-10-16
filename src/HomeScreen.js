@@ -60,8 +60,8 @@ class HomeScreen extends Component {
         this.setState({
             showTweets: true,
         });
-        // this.props.searchTweets(this.state.searchText);
-        this.props.searchTweets('reactjs');
+        this.props.searchTweets(this.state.searchText);
+        //this.props.searchTweets('reactjs');
     }
 
     render() {

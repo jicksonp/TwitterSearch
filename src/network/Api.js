@@ -11,7 +11,6 @@ import _ from 'underscore';
 import * as Urls from './Urls';
 
 
-
 function apiError(type: ApiErrorType, statusCode: number, data: any): ApiError {
     return {
         type: type,

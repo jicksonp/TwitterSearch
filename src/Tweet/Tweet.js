@@ -19,7 +19,12 @@ const styles = StyleSheet.create({
     profile: {
         width: 50,
         height: 50,
-        borderRadius: 5,
+        borderRadius: 3,
+    },
+    tweetContent: {
+        marginLeft: 8,
+        marginRight: 8,
+        flexDirection: 'column',
     },
     nameContainer: {
         flexDirection: 'row',
@@ -37,18 +42,32 @@ const styles = StyleSheet.create({
     },
     tweetText: {
         color: GLOBAL.COLOR.BLACK_54,
-        fontSize: 18,
-        textAlign: 'center',
+        fontSize: 16,
+        flexWrap: 'wrap',
     },
-    tweetContent: {
-        marginLeft: 8,
-        flexDirection: 'column',
-    }
+    tweetImage: {
+        marginTop: 8,
+        marginRight: 8,
+        height: 150,
+        borderRadius: 3,
+    },
 });
 
 class Tweet extends Component {
     render() {
         let tweet = this.props.tweet;
+        let image = null;
+        if (tweet.entities.media && tweet.entities.media.length > 0) {
+            image = (
+                <View>
+                    <Image
+                        style={styles.tweetImage}
+                        resizeMode='cover'
+                        source={{uri: tweet.entities.media[0].media_url_https}}
+                    />
+                </View>
+            );
+        }
         return (
             <View style={styles.container}>
                 <Image
@@ -60,9 +79,11 @@ class Tweet extends Component {
                         <Text style={styles.name}>{tweet.user.name}</Text>
                         <Text style={styles.screenName}>@{tweet.user.screen_name}</Text>
                     </View>
-
+                    <View>
+                        <Text style={styles.tweetText}>{tweet.text}</Text>
+                    </View>
+                    {image}
                 </View>
-
             </View>
         );
     }
