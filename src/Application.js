@@ -36,7 +36,22 @@ export default class Application extends Component {
     }
 
     searchTweets() {
-        console.log('Search Tweets using tag ' + this.state.searchText);
+        let url = 'https://api.twitter.com/1.1/search/tweets.json?q=%40' + this.state.searchText;
+        return fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAAC3hxQAAAAAAnvCJLe07g7TSMz6IvyFvOwo6AYE%3DER8Ee9PvQGEfcvvH7pDxO19tb01cPal8M01DUTLGBAcgshUKKY'
+            }
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log('Tweets' + JSON.stringify(responseJson));
+                return responseJson.statuses;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     render() {
