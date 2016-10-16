@@ -14,6 +14,7 @@ import {
 
 import ShowProgressAndNetworkErrorComponent from './common/ShowProgressAndNetworkErrorComponent';
 import * as GLOBAL from './utils/Globals';
+import Tweet from './Tweet/Tweet';
 var {connect} = require('react-redux');
 var PureListView = require('./common/PureListView');
 var {searchTweets} = require('./actions/searchAction');
@@ -59,7 +60,8 @@ class HomeScreen extends Component {
         this.setState({
             showTweets: true,
         });
-        this.props.searchTweets(this.state.searchText);
+        // this.props.searchTweets(this.state.searchText);
+        this.props.searchTweets('reactjs');
     }
 
     render() {
@@ -90,25 +92,23 @@ class HomeScreen extends Component {
                     <PureListView
                         style={{flex:1}}
                         data={this.props.tweets}
-                        renderRow={this.renderRow}
+                        renderRow={this.renderTweetRow}
                     />
                 );
             } else {
-                content = this.renderEmptyList();
+                content = this.renderEmptyTweet();
             }
         }
         return content;
     }
 
-    renderRow(tweet) {
+    renderTweetRow(tweet) {
         return (
-            <View>
-                <Text>tweet {tweet.text}</Text>
-            </View>
+            <Tweet tweet={tweet}/>
         );
     }
 
-    renderEmptyList() {
+    renderEmptyTweet() {
         return (
             <View style={styles.errorContainer}>
                 <Text style={styles.errorText}>No Tweets found with {this.state.searchText}</Text>
