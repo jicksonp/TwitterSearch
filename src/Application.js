@@ -8,35 +8,45 @@ import {
 } from 'react-native';
 
 import {
-    Button
-} from 'react-native-elements'
+    Button,
+    SearchBar,
+} from 'react-native-elements';
 
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
     },
 });
 
 export default class Application extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchText: '',
+        };
+    }
+
+    onChangeText(text) {
+        this.setState({
+            searchText: text,
+        });
+    }
+
+    searchTweets() {
+        console.log('Search Tweets using tag ' + this.state.searchText);
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Welcome to React Native Jickson!
-                </Text>
-                <Button
-                    raised
-                    icon={{name: 'cached'}}
-                    title='RAISED WITH ICON'/>
+                <SearchBar
+                    lightTheme
+                    onSubmitEditing={this.searchTweets.bind(this)}
+                    onChangeText={this.onChangeText.bind(this)}
+                    placeholder='Please enter hashtag to search'/>
             </View>
         );
     }
