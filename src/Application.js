@@ -7,6 +7,10 @@ import {
     View
 } from 'react-native';
 
+import {
+    Button
+} from 'react-native-elements'
+
 
 const styles = StyleSheet.create({
     container: {
@@ -29,6 +33,10 @@ export default class Application extends Component {
                 <Text style={styles.welcome}>
                     Welcome to React Native Jickson!
                 </Text>
+                <Button
+                    raised
+                    icon={{name: 'cached'}}
+                    title='RAISED WITH ICON'/>
             </View>
         );
     }
