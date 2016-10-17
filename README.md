@@ -28,4 +28,12 @@ Step 4b:
 ```
 react-native run-ios
 ```  
+
+
+## Libraries Used
+  - [React Native](https://facebook.github.io/react-native/)
+  - [Redux](http://redux.js.org/docs/introduction/)
+  - [React Native Elements](https://github.com/react-native-community/react-native-elements)
+  - [Underscore](http://underscorejs.org/)
+  - [KeyMirror](https://www.npmjs.com/package/key-mirror)
   
